@@ -1,0 +1,70 @@
+html{
+    min-height: 100%;
+    position: relative;
+}
+
+body{
+    background-color: #075E54;
+    position: relative;
+    margin: 0;
+    margin-bottom: 40px;
+    padding-bottom: 3em;
+}
+
+.card{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    margin: 3px;
+}
+
+.modal{
+    position: fixed !important;
+}
+
+.contenedorFooter{
+    width: 100%;
+    background-color:  rgb(110, 165, 113);
+    display: flex;
+    flex-direction: row;
+    caret-color: #ffce3c;
+}
+
+.miniBox{
+    width: 50%;
+    background-color: #ffce3c;
+}
+
+.img-thumbnail{
+    max-width: 400px;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
+
+.carousel-item{
+    transition: transform 1s ease, opacity .3s ease-out;
+}
+
+.iframeMap{
+    max-width: 100%;
+    height: auto;
+}
+
+.error{
+    color: red;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    display: block;
+    flex: 1 0 auto;
+}
