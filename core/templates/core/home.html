@@ -1,14 +1,50 @@
 {% extends 'core/base.html'%}
-
-{% block content %}
-
-<h3>Inicio</h3>
-{% if request.user.is_authenticated %}
-<hr>
-<h4>
-    {{ user.username | upper }}, bienvenido!
-</h4>
-{% endif %}
-
-
+{% load static %}
+{% block second_content %}
+    <section class="container" id="contenidos"> <!-- Contenidos -->
+      <div class="row">
+        <div class="col-lg-3 col-md my-2 mx-auto">
+          <div class="card mx-auto">
+            <img src="{%static 'core/img/backgrounds/productos.jpg'%}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Productos</h5>
+              <p class="card-text">Conoce nuestra variedad de frutas y verduras.</p>
+              <a href="" class="btn btn-success">Ver</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md my-2 mx-auto">
+          <div class="card mx-auto">
+            <img src="{%static 'core/img/backgrounds/envios.jpg'%}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Envios</h5>
+              <p class="card-text">Ingresa tu direccion y despacha tu pedido.</p>
+              <a href="" class="btn btn-success">Ver</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md my-2 mx-auto">
+          <div class="card mx-auto">
+            <img src="{%static 'core/img/backgrounds/iniciar.jpg'%}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Iniciar Sesion.</h5>
+              <p class="card-text">Inicia Sesion y disfurta de nuestros privilegios.</p>
+              <a href="" class="btn btn-success">Ver</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 {% endblock %}
+
+
+
+{% block js_ %}
+  <script src="{% static 'core/js/funciones.js' %}"></script>
+  <script src="{% static 'core/js/array.js' %}"></script>
+  <script src="{% static 'core/js/efectos.js' %}"></script>
+  <script src="{% static 'core/js/script_key.js' %}"></script>
+  <script src="{% static 'core/js/form.js' %}"></script>
+{% endblock %}
+
