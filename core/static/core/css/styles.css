@@ -1,0 +1,169 @@
+@import url('https://fonts.cdnfonts.com/css/avenir-next-lt-pro');
+
+
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+#header{
+    background-image: url("../img/backgrounds/bg-header.png");
+    color: white;
+}
+
+#nav-logo{
+    width: 45px;
+    height: 45px;
+}
+
+#header-title h3, h6{
+    display: inline;
+}
+
+
+#navbarTogglerDemo03 .active{
+    color: rgb(20, 147, 20);
+}
+
+#navbarTogglerDemo03 .nav-link:hover{
+    color:  rgb(20, 147, 20);
+}
+
+main{
+    background-image: url("../img/backgrounds/bg-page.jpg");
+}
+
+#widget-fecha{
+    border: 0px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#icon-clima{
+    width: 60px;
+    height: 60px;
+}
+
+#temperatura{
+    font: normal 600 25px 'Avenir Next LT Pro', sans-serif;
+    display: inline-block;
+}
+
+#descripcion-clima{
+    font-size: 13px;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+#card-title{
+    font: normal 600 25px 'Avenir Next LT Pro', sans-serif;
+    display: inline-block;
+}
+
+#card-text{
+    font-size: 13px;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+#bg-img-page{
+    border: 0px;
+}
+
+.container-items{
+    gap: 20px;
+}
+
+.item{
+    border-radius: 10px;
+
+}
+
+.info-product{
+    padding: 15px 30px;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.price{
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.item:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+}
+
+.item img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    transition: all .5s;
+}
+
+.item:hover img{
+    transform: scale(1.2);
+}
+
+.item figure {
+    overflow: hidden;
+}
+
+.info-product button {
+    border: none;
+    background: none;
+    background-color: black;
+    color: white;
+    padding: 15px 10px;
+    cursor: pointer;
+
+
+}
+
+#img-api{
+ width: 208px;
+ height: 208px;
+}
+
+
+.img-hover{
+    width: 400px;
+    height: 400px;
+}
+
+.footer{
+    padding: 30px 0 30px 0;
+    background-color: rgb(29, 29, 29);
+}
+
+.footer button{
+    color: white;
+    border: 1px solid white;
+}
+.footer button:hover{
+    border: 1px solid #44d441;
+    color: #44d441;
+}
+
+.footer .quick-info a{
+    color: #44d441;
+}
+
+#footer-nav .nav-link{
+    color: white;
+}
+
+#footer-nav .nav-link:hover{
+    color: #44d441;
+}
+
+[data-bs-theme="dark"] {
+    background-color: rgb(19, 19, 19);
+    
+}
