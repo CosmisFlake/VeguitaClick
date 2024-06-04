@@ -1,0 +1,160 @@
+.navbar-logo {
+    width: 100px;
+    height: 100px;
+}
+
+.img-producto {
+    height: 150px;
+    width: 150px;
+}
+.img-detail{
+    height: 275px;
+    width: 275px;
+}
+.img-update{
+    height: 40%;
+    width: 40%;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+header{
+    background: url("img/bg-header.png");
+    color: white;
+}
+ 
+#header-title h3, h6{
+    display: inline;
+}
+
+topa{
+    background-color: rgb(35, 179, 109);
+    color: white;
+}
+ 
+#topa-title h3, h6{
+    display: inline;
+
+}
+
+#navbarTogglerDemo03 .active{
+    color: #bd931f;
+}
+
+#navbarTogglerDemo03 .nav-link:hover{
+    color: #bd931f;
+}
+
+main{
+    background: url("img/bg-page.jpg");
+    background-color: white;
+    
+}
+
+#widget-fecha{
+    border: 0px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#icon-clima{
+    width: 60px;
+    height: 60px;
+}
+
+#temperatura{
+    font: normal 600 25px 'Avenir Next LT Pro', sans-serif;
+    display: inline-block;
+}
+
+#descripcion-clima{
+    font-size: 13px;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+#card-title{
+    font: normal 600 25px 'Avenir Next LT Pro', sans-serif;
+    display: inline-block;
+}
+
+#card-text{
+    font-size: 13px;
+    margin-top: 0px;
+    display: inline-block;
+}
+
+#bg-img-page{
+    border: 0px;
+}
+
+#contenidos{
+    margin: 80px auto;
+    padding: 0;
+}
+#contenidos .card{
+    padding: auto;
+    width: 20rem;
+}
+
+#contenidos .card-img-top{
+    width: 318px;
+    height: 368px;
+}
+
+#contenidos .card-text{
+    font-size: 14px;
+}
+
+#img-api{
+ width: 208px;
+ height: 208px;
+}
+
+
+.img-hover{
+    width: 400px;
+    height: 400px;
+}
+
+.footer{
+    padding: 30px 0 30px 0;
+    background-color: rgb(29, 29, 29);
+}
+
+.footer button{
+    color: white;
+    border: 1px solid white;
+}
+.footer button:hover{
+    border: 1px solid #d4b341;
+    color: #d4b341;
+}
+
+.footer .quick-info a{
+    color: #d4b341;
+}
+
+#footer-nav .nav-link{
+    color: white;
+}
+
+#footer-nav .nav-link:hover{
+    color: #d4b341;
+}
+
+[data-bs-theme="dark"] {
+    background-color: rgb(19, 19, 19);
+    
+  
+
+    .main{
+        background-image: url"{%static'../img/backgrounds/bg-main-dark.svg'%}";
+        background-repeat: repeat y;
+    }
+}
