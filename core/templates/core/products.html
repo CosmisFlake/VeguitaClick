@@ -1,9 +1,56 @@
-{% extends 'core/base.html'%}
+{% extends 'core/base.html' %}
 
-{% block content %}
+{% load static %}
 
-<h3>Productos</h3>
+{% block title %}Catalogo de Productos{% endblock %}
 
+{% block item_nav %}
+<li class="nav-item">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+       Proveedor
+    </a>
+    <ul class="dropdown-menu">
+        {% for pr in proveedores %}
+        <li><a class="dropdown-item" href="/producto/proveedor/{{pr.id}}">{{pr.proveedor}}</a></li>
+        {% endfor %}
+    </ul>
+</li>
+{% endblock %}
 
+{% block body %}
+<section class="container mt-4">    
+    <div class="row row-cols-1 row-cols-md-1 row-cols-lg-3 gy-3">
+        {% for p in productos %}
+        <div class="col">
+            <div class="container-items">
+              <div class="item">
+                <figure>
+                {% if p.image %}
+                <img src="{{p.image.url}}"  alt="{{p.name}}">
+                {% else %}
+                <img src="{% static 'crud/img/image_not_found.jpg' %}"  alt="Image not found">
+                {% endif  %}
+                </figure>
+                  <div class="container text-center">
+                    <p class="card-text fst-italic">
+                        <a class="text-decoration-none" href="/producto/proveedor/{{p.proveedor.id}}">{{p.proveedor}}</a>
+                    </p>
+                    <p class="card-title fw-bold">{{p.name}}</p>
+                    <h4 class="card-text">${{p.value }}</h4>
+                    <a class="btn btn-dark pt-1 mb-2" href="#">Comprar</a>
+                  </div>
+              </div>
+            </div>   
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
 
+{% block js_ %}
+  <script src="{% static 'core/js/funciones.js' %}"></script>
+  <script src="{% static 'core/js/array.js' %}"></script>
+  <script src="{% static 'core/js/efectos.js' %}"></script>
+  <script src="{% static 'core/js/script_key.js' %}"></script>
+  <script src="{% static 'core/js/form.js' %}"></script>
 {% endblock %}
