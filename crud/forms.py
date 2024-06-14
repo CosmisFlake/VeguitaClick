@@ -26,7 +26,7 @@ class ProductoForm(ModelForm):
         widgets = {
             'idProducto':forms.TextInput(attrs={'class':'form-control'}),
             'name':forms.TextInput(attrs={'class':'form-control'}),
-            'tipo':forms.TextInput(attrs={'class':'form-control'}),
+            'tipo':forms.Select(attrs={'class':'form-control'}),
             'proveedor':forms.Select(attrs={'class':'form-control'}),
             'value':forms.TextInput(attrs={'class':'form-control','type':'number'}),
             'stock':forms.TextInput(attrs={'class':'form-control','type':'number'}),
@@ -35,3 +35,19 @@ class ProductoForm(ModelForm):
 
 class ProveedorForm(ModelForm):
     pass
+
+class TipoProductoForm(ModelForm):
+    class Meta:
+        model = TipoProducto
+        fields = [
+            'id',
+            'tipo'
+        ]
+        labels = {
+            'id':'ID',
+            'tipo':'Tipo de producto'
+        }
+        widgets = {
+            'id':forms.TextInput(attrs={'class':'form-control'}),
+            'tipo':forms.TextInput(attrs={'class':'form-control'})
+        }

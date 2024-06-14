@@ -14,11 +14,25 @@ class Proveedor(models.Model):
     def __str__(self) -> str:
         return self.proveedor
 
+class TipoProducto(models.Model):
+    tipo = models.CharField(verbose_name='Tipo de Producto', max_length=50)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+
+    class Meta:
+        verbose_name = 'tipo de producto'
+        verbose_name_plural = 'tipo de productos'
+        ordering = ['id']
+
+
+    def __str__(self) -> str:
+        return self.tipo
+
 
 class Producto(models.Model):
     idProducto = models.CharField(primary_key=True,verbose_name='ID',max_length=20)
     name = models.CharField(verbose_name='Nombre',max_length=250)
-    tipo = models.CharField(verbose_name='Tipo de Producto',max_length=100)
+    tipo = models.ForeignKey(TipoProducto,verbose_name='Tipo de Producto',on_delete=models.CASCADE)
     proveedor = models.ForeignKey(Proveedor,verbose_name='Proveedor',on_delete=models.CASCADE)
     value = models.IntegerField(verbose_name='Valor')
     stock = models.IntegerField(verbose_name='Stock')
