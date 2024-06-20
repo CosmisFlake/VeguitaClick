@@ -10,4 +10,9 @@ urlpatterns = [
     path('producto/new/', producto_new, name="producto-new"),
     path('producto/proveedor/<proveedor>', producto_by_proveedor, name="producto-proveedor"),
     path('producto/tipo/<tipo>',producto_by_tipo, name="producto-tipo"),
+    path('tipoProducto/', tipoProducto_lista, name="tipoProducto"), 
+    path('tipoProducto/<str:tipoProducto_id>/delete', tipoProducto_delete, name="tipoProducto-delete"),
+    path('tipoProducto/detail/<str:tipoProducto_id>', tipoProducto_detail, name="tipoProducto-detail"),
+    path('tipoProducto/edit/<str:tipoProducto_id>', tipoProducto_update, name="tipoProducto-edit"),
+    path('tipoProducto/new/', tipoProducto_new, name="tipoProducto-new"),
 ]

@@ -30,17 +30,24 @@
             </ul>
             <div class="row">
                 <div class="col-2">
-                    <a class="btn btn-outline-primary" href="{% url 'producto' %}">Volver</a>
+                    <!-- <a class="btn btn-outline-primary" href="{% url 'producto' %}">Volver</a> -->
+                    <a class="btn btn-primary m-2" href="{% url 'producto' %}">Volver</a>
                 </div>
                 <div class="col-2">
-                    <a class="btn btn-outline-secondary" href="{% url 'producto-edit' producto_id=producto.idProducto %}">Editar</a>
+                    <!-- <a class="btn btn-outline-secondary" href="{% url 'producto-edit' producto_id=producto.idProducto %}">Editar</a> -->
+                    <a class="btn btn-secondary m-2" href="{% url 'producto-edit' producto_id=producto.idProducto %}">Editar</a>
                 </div>
                 <div class="col-2">
-                    <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal"
+                    <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop"
                     data-href="{% url 'producto-delete' producto_id=producto.idProducto %}">
                     Eliminar
-                </a>
+                    </a> -->
+                    <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    data-href="{% url 'producto-delete' producto_id=producto.idProducto %}">
+                    Eliminar
+                    </a>
                 </div>
             </div>
         </div>        

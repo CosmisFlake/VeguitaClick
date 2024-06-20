@@ -102,3 +102,63 @@ def producto_delete(request, producto_id):
         return redirect(reverse('producto') + '?FAIL')
 
 
+def tipoProducto_lista(request):
+    context = {'tipoProducto': TipoProducto.objects.all()}
+    return render(request,'crud/tipoProducto.html',context)
+
+
+def tipoProducto_new(request):
+    if request.method == 'POST':
+        form = TipoProductoForm(request.POST, request.FILES)
+        if form.is_valid():
+            tipo = form.cleaned_data.get('tipo')
+            obj = TipoProducto.objects.create(
+                tipo = tipo
+            )
+            obj.save()
+            return redirect(reverse('tipoProducto')+ '?OK')
+        else:
+            return redirect(reverse('tipoProducto')+ '?FAIL')
+    else:
+        form = TipoProductoForm
+    return render(request,'crud/tipoProducto-new.html',{'form':form})
+
+
+def tipoProducto_update(request,tipoProducto_id):
+    try:
+        tipoProducto = TipoProducto.objects.get(id = tipoProducto_id)
+        form = TipoProductoForm(instance=tipoProducto)
+
+        if request.method == 'POST':
+            form = TipoProductoForm(request.POST, request.FILES, instance=tipoProducto)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('tipoProducto') + '?UPDATED')
+            else:
+                return redirect(reverse('tipoProducto-edit') + tipoProductos_id) 
+
+        context = {'form':form}
+        return render(request,'crud/tipoProducto-edit.html',context)
+    except:
+        return redirect(reverse('tipoProducto') + '?NO_EXISTS')
+
+
+def tipoProducto_detail(request, tipoProducto_id):
+    try:
+        tipoProducto = TipoProducto.objects.get(id = tipoProducto_id )
+        if tipoProducto:
+            context = {'tipoProducto':tipoProducto}
+            return render(request,'crud/tipoProducto-detail.html',context)
+        else:
+            return redirect(reverse('tipoProducto') + '?lala')
+    except:
+        return redirect(reverse('tipoProducto') + '?FAIL')
+
+
+def tipoProducto_delete(request, tipoProducto_id):
+    try:
+        tipoProducto = TipoProducto.objects.get(idProducto=tipoProducto_id)
+        tipoProducto.delete()
+        return redirect(reverse('tipoProducto') + '?DELETED')
+    except:
+        return redirect(reverse('tipoProducto') + '?FAIL')
