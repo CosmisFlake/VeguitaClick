@@ -3,12 +3,15 @@ from django.db import models
 # Create your models here.
 class Proveedor(models.Model):
     proveedor = models.CharField(verbose_name='Proveedor', max_length=50)
+    direccion = models.CharField(verbose_name='Direccion',max_length=100)
+    rut = models.CharField(verbose_name='Rut',max_length=12)
     created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
 
     class Meta:
         verbose_name = 'proveedor'
         verbose_name_plural = 'proveedores'
+        ordering = ['proveedor']
 
 
     def __str__(self) -> str:
@@ -47,3 +50,69 @@ class Producto(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+
+class TipoVehiculo(models.Model):
+    tipo = models.CharField(verbose_name='Tipo de Vehiculo', max_length=50)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+
+    class Meta:
+        verbose_name = 'tipo de vehiculo'
+        verbose_name_plural = 'tipo de vehiculos'
+        ordering = ['id']
+
+
+    def __str__(self) -> str:
+        return self.tipo
+
+
+class EstadoVehiculo(models.Model):
+    estado = models.CharField(verbose_name='Estado de Vehiculo', max_length=50)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+
+    class Meta:
+        verbose_name = 'estado de vehiculo'
+        verbose_name_plural = 'estado de vehiculos'
+        ordering = ['id']
+
+
+    def __str__(self) -> str:
+        return self.estado
+
+
+class Vehiculo(models.Model):
+    idVehiculo = models.CharField(primary_key=True,verbose_name='ID',max_length=20)
+    nombre = models.CharField(verbose_name='Nombre',max_length=250)
+    tipo = models.ForeignKey(TipoVehiculo,verbose_name='Tipo de Vehiculo',on_delete=models.CASCADE)
+    color = models.CharField(verbose_name='Color de Vehiculo',max_length=12)
+    estado = models.ForeignKey(EstadoVehiculo,verbose_name='Estado de Vehiculo',on_delete=models.CASCADE)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+
+    class Meta:
+        verbose_name = 'vehiculo'
+        verbose_name_plural = 'vehiculos'
+        ordering = ['nombre']
+
+
+    def __str__(self) -> str:
+        return self.nombre
+
+
+class Transportista(models.Model):
+    nombre = models.CharField(verbose_name='Nombre',max_length=250)
+    direccion = models.CharField(verbose_name='Direccion',max_length=100)
+    rut = models.CharField(verbose_name='Rut',max_length=12)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+
+    class Meta:
+        verbose_name = 'vehiculo'
+        verbose_name_plural = 'vehiculos'
+        ordering = ['nombre']
+
+
+    def __str__(self) -> str:
+        return self.nombre

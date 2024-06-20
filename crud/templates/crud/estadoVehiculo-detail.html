@@ -1,0 +1,81 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}{{estadoVehiculo.id}}{% endblock %}
+
+{% block main_content %}
+<div class="container-fluid">
+    <main>
+    <header>
+    <div class="container my-2 py-3 text-white text-center rounded bg-success">
+        <h1>Informacion sobre Estado de Vehiculo</h1>
+    </div>
+    </header>
+    <div class="container my-4">
+        <div class="row">   
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">Id de estado de vehiculo: <p class="fw-bold">{{estadoVehiculo.id}}</p></li>
+                            <li class="mb-2">Estado de vehiculo: <p class="fw-bold">{{estadoVehiculo.estado}}</p></li>
+                            <li class="mb-2 text-muted fst-italic">Registrado: <p class="fw-bold">{{estadoVehiculo.created_at}}</p></li>
+                            <li class="mb-2 text-muted fst-italic">Última actualización: <p class="fw-bold">{{estadoVehiculo.updated_at}}</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <!-- <a class="btn btn-outline-primary" href="{% url 'estadoVehiculo' %}">Volver</a> -->
+                <a class="btn btn-primary m-2" href="{% url 'estadoVehiculo' %}">Volver</a>
+            </div>
+            <div class="col-2">
+                <!-- <a class="btn btn-outline-secondary" href="{% url 'estadoVehiculo-edit' estadoVehiculo_id=estadoVehiculo.id %}">Editar</a> -->
+                <a class="btn btn-secondary m-2" href="{% url 'estadoVehiculo-edit' estadoVehiculo_id=estadoVehiculo.id %}">Editar</a>
+            </div>
+            <div class="col-2">
+                <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal" 
+                data-bs-target="#staticBackdrop" 
+                data-href="{% url 'estadoVehiculo-delete' estadoVehiculo_id=estadoVehiculo.id %}">Eliminar</a> -->
+                <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal" 
+                data-bs-target="#staticBackdrop" 
+                data-href="{% url 'estadoVehiculo-delete' estadoVehiculo_id=estadoVehiculo.id %}">Eliminar</a>
+            </div>
+        </div>
+    </div>
+    </main>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Atencion!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="modal-title">Estas seguro que deseas eliminar el estado de vehiculo seleccionado?<br>Esta acción no se puede deshacer.</h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                <a href="#" id="confirmar-borrar" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $('.modal-borrar').on('click',function(){
+        const href = $(this).attr('data-href');
+        $('#confirmar-borrar').attr('href',href);
+    });
+</script>
+{% endblock %}

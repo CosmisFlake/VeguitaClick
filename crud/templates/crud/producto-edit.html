@@ -15,63 +15,63 @@
 <div class="container my-2 p-5">
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="row row-cols-2 my-4">
-                <div class="col col-lg-5 mb-3 mx-auto">
-                    <div class="form-group mb-3">
-                         <label for="idProducto" class="fw-bold">ID</label>
-                         <div class="input-group">
-                             {{form.idProducto}}
-                         </div>
-                    </div>
-                </div>
-                <div class="col col-lg-5 mb-3 mx-auto">
-                    <div class="form-group mb-3">
-                         <label for="name" class="fw-bold">Nombre</label>
-                         <div class="input-group">
-                             {{form.name}}
-                         </div>
-                   </div>
-                </div>
-            </div>
-
-            <div class="row row-cols-2 my-4">
-                <div class="col col-lg-5 mb-3 mx-auto">
-                    <div class="form-group mb-3">
-                        <label for="tipo" class="fw-bold">Tipo de Producto</label>
+        <div class="row row-cols-2 my-4">
+            <div class="col col-lg-5 mb-3 mx-auto">
+                <div class="form-group mb-3">
+                        <label for="idProducto" class="fw-bold">ID</label>
                         <div class="input-group">
-                             {{form.tipo}}
+                            {{form.idProducto}}
                         </div>
-                   </div>
                 </div>
-                <div class="col col-lg-5 mb-3 mx-auto"> 
-                    <div class="form-group mb-3">
-                         <label for="marca" class="fw-bold">Proveedor</label>
-                         <div class="input-group">
-                             {{form.proveedor}}
-                         </div>
+            </div>
+            <div class="col col-lg-5 mb-3 mx-auto">
+                <div class="form-group mb-3">
+                        <label for="name" class="fw-bold">Nombre</label>
+                        <div class="input-group">
+                            {{form.name}}
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-2 my-4">
+            <div class="col col-lg-5 mb-3 mx-auto">
+                <div class="form-group mb-3">
+                    <label for="tipo" class="fw-bold">Tipo de Producto</label>
+                    <div class="input-group">
+                            {{form.tipo}}
                     </div>
                 </div>
             </div>
-            <div class="row row-cols-2 my-4">
-                <div class="col col-lg-5 mb-3 mx-auto ">
-                    <div class="form-group mb-3">
-                     <label for="value" class="fw-bold">Precio</label>
-                         <div class="input-group">
-                             {{form.value}}
-                         </div> 
-                    </div>
-                </div>
-                <div class="col col-lg-5 mb-3 mx-auto ">
-                     <div class="form-group mb-3">
-                      <label for="stock" class="fw-bold">Stock</label>
-                         <div class="input-group">
-                             {{form.stock}}
-                         </div>
-                     </div>
+            <div class="col col-lg-5 mb-3 mx-auto"> 
+                <div class="form-group mb-3">
+                        <label for="marca" class="fw-bold">Proveedor</label>
+                        <div class="input-group">
+                            {{form.proveedor}}
+                        </div>
                 </div>
             </div>
+        </div>
+
+        <div class="row row-cols-2 my-4">
+            <div class="col col-lg-5 mb-3 mx-auto ">
+                <div class="form-group mb-3">
+                    <label for="value" class="fw-bold">Precio</label>
+                        <div class="input-group">
+                            {{form.value}}
+                        </div> 
+                </div>
+            </div>
+            <div class="col col-lg-5 mb-3 mx-auto ">
+                    <div class="form-group mb-3">
+                    <label for="stock" class="fw-bold">Stock</label>
+                        <div class="input-group">
+                            {{form.stock}}
+                        </div>
+                    </div>
+            </div>
+        </div>
+
         <div class="form-group mb-3">
             <label for="image" class="fw-bold">Imagen</label>
             <div class="input-group">
@@ -83,6 +83,7 @@
                 </div>
             {% endif %}
         </div>
+        
         <div class="text-center my-4">
             <input type="submit" class="btn btn-primary m-2" id="actualizar" value="Actualizar">
             <input type="reset" class="btn btn-secondary m-2" id="limpiar" value="Restablecer">

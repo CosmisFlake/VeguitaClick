@@ -34,7 +34,27 @@ class ProductoForm(ModelForm):
         }
 
 class ProveedorForm(ModelForm):
-    pass
+    class Meta:
+        model = Proveedor
+        fields = [
+            'id',
+            'proveedor',
+            'direccion',
+            'rut'
+        ]
+        labels = {
+            'id':'ID',
+            'proveedor':'Nombre de proveedor',
+            'direccion':'Direccion de proveedor',
+            'rut':'Rut de proveedor'
+
+        }
+        widgets = {
+            'id':forms.TextInput(attrs={'class':'form-control'}),
+            'proveedor':forms.TextInput(attrs={'class':'form-control'}),
+            'direccion':forms.TextInput(attrs={'class':'form-control'}),
+            'rut':forms.TextInput(attrs={'class':'form-control'})
+        }
 
 class TipoProductoForm(ModelForm):
     class Meta:
@@ -50,4 +70,36 @@ class TipoProductoForm(ModelForm):
         widgets = {
             'id':forms.TextInput(attrs={'class':'form-control'}),
             'tipo':forms.TextInput(attrs={'class':'form-control'})
+        }
+
+class TipoVehiculoForm(ModelForm):
+    class Meta:
+        model = TipoVehiculo
+        fields = [
+            'id',
+            'tipo'
+        ]
+        labels = {
+            'id':'ID',
+            'tipo':'Tipo de vehiculo'
+        }
+        widgets = {
+            'id':forms.TextInput(attrs={'class':'form-control'}),
+            'tipo':forms.TextInput(attrs={'class':'form-control'})
+        }
+
+class EstadoVehiculoForm(ModelForm):
+    class Meta:
+        model = EstadoVehiculo
+        fields = [
+            'id',
+            'estado'
+        ]
+        labels = {
+            'id':'ID',
+            'estado':'Estado de vehiculo'
+        }
+        widgets = {
+            'id':forms.TextInput(attrs={'class':'form-control'}),
+            'estado':forms.TextInput(attrs={'class':'form-control'})
         }
