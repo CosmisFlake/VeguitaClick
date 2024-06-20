@@ -1,0 +1,58 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title%}Actualización{% endblock %}
+
+{% block main_content %}
+<div class="container-fluid">
+<main>
+<header>
+<div class="container my-2 py-3 text-white text-center rounded bg-success">
+    <h1>Formulario Actualización Proveedor</h1>
+</div>
+</header>
+<div class="container my-2 p-5">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row row-cols-2 my-4">
+            <div class="col col-lg-5 mb-3 mx-auto">
+                <div class="form-group mb-3">
+                    <label for="proveedor" class="fw-bold">Nombre Proveedor</label>
+                    <div class="input-group">
+                        {{form.proveedor}}
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-5 mb-3 mx-auto">
+                <div class="form-group mb-3">
+                        <label for="direccion" class="fw-bold">Direccion</label>
+                        <div class="input-group">
+                            {{form.direccion}}
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-2 my-4">
+            <div class="col col-lg-5 mb-3 mx-auto">
+                <div class="form-group mb-3">
+                    <label for="rut" class="fw-bold">Rut</label>
+                    <div class="input-group">
+                            {{form.rut}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center my-4">
+            <input type="submit" class="btn btn-primary m-2" id="actualizar" value="Actualizar">
+            <input type="reset" class="btn btn-secondary m-2" id="limpiar" value="Restablecer">
+            <a class="btn btn-success m-2" href="{% url 'proveedor' %}">Volver</a>
+        </div>
+
+    </form>
+</div>
+</main>
+</div>
+{% endblock %}

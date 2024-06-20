@@ -3,7 +3,7 @@ from .models import *
 # Register your models here.
 class ProveedorAdmin(admin.ModelAdmin):
     readonly_fields = ('id','created_at','updated_at')
-    list_display = ('id','proveedor')
+    list_display = ('id','proveedor','direccion','rut',)
     ordering = ['proveedor']
   
 class ProductoAdmin(admin.ModelAdmin):
