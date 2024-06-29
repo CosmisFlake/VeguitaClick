@@ -2,14 +2,14 @@
 
 {% load static %}
 
-{% block title%}Agregar Producto{% endblock %}
+{% block title%}Agregar Vehiculo{% endblock %}
 
 {% block main_content %}
 <div class="container-fluid">
 <main>
 <header>
 <div class="container my-2 py-3 text-white text-center rounded bg-success">
-    <h1>Formulario Registros nuevos Productos</h1>
+    <h1>Formulario Registros nuevos Vehiculos</h1>
 </div>
 </header>
 <div class="container my-2 p-5">
@@ -18,17 +18,17 @@
         <div class="row row-cols-2 my-4">
             <div class="col col-lg-5 mb-3 mx-auto">
                 <div class="form-group mb-3">
-                     <label for="idProducto" class="fw-bold">ID</label>
+                     <label for="idVehiculo" class="fw-bold">ID</label>
                      <div class="input-group">
-                         {{form.idProducto}}
+                         {{form.idVehiculo}}
                      </div>
                 </div>
             </div>
             <div class="col col-lg-5 mb-3 mx-auto">
                 <div class="form-group mb-3">
-                     <label for="name" class="fw-bold">Nombre</label>
+                     <label for="nombre" class="fw-bold">Nombre</label>
                      <div class="input-group">
-                         {{form.name}}
+                         {{form.nombre}}
                      </div>
                </div>
             </div>
@@ -37,7 +37,7 @@
         <div class="row row-cols-2 my-4">
             <div class="col col-lg-5 mb-3 mx-auto">
                 <div class="form-group mb-3">
-                    <label for="tipo" class="fw-bold">Tipo de Producto</label>
+                    <label for="tipo" class="fw-bold">Tipo de Vehiculo</label>
                     <div class="input-group">
                          {{form.tipo}}
                     </div>
@@ -45,10 +45,10 @@
             </div>
             <div class="col col-lg-5 mb-3 mx-auto"> 
                 <div class="form-group mb-3">
-                     <label for="marca" class="fw-bold">Proveedor</label>
-                     <div class="input-group">
-                         {{form.proveedor}}
-                     </div>
+                    <label for="color" class="fw-bold">Color</label>
+                    <div class="input-group">
+                        {{form.color}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,23 +56,12 @@
         <div class="row row-cols-2 my-4">
             <div class="col col-lg-5 mb-3 mx-auto ">
                 <div class="form-group mb-3">
-                 <label for="value" class="fw-bold">Precio</label>
-                     <div class="input-group">
-                         {{form.value}}
-                     </div> 
+                    <label for="estado" class="fw-bold">Estado</label>
+                    <div class="input-group">
+                        {{form.estado}}
+                    </div> 
                 </div>
             </div>
-            <div class="col col-lg-5 mb-3 mx-auto ">
-                 <div class="form-group mb-3">
-                  <label for="stock" class="fw-bold">Stock</label>
-                     <div class="input-group">
-                         {{form.stock}}
-                     </div>
-                 </div>
-            </div>
-        </div>
-
-        <div class="row row-cols-2 my-4">
             <div class="col col-lg-5 mb-3 mx-auto ">
                 <div class="form-group mb-3">
                     <label for="image" class="fw-bold">Imagen</label>
@@ -82,11 +71,11 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="text-center my-4">
             <input type="submit" class="btn btn-primary m-2" id="registrar" value="Registrar">
             <input type="reset" class="btn btn-secondary m-2" id="limpiar" value="Restablecer">
-            <a class="btn btn-success m-2" href="{% url 'producto' %}">Volver</a>
+            <a class="btn btn-success m-2" href="{% url 'vehiculo' %}">Volver</a>
         </div>
     </form>
 </div>
