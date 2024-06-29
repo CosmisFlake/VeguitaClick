@@ -352,3 +352,211 @@ def estadoVehiculo_delete(request, estadoVehiculo_id):
         return redirect(reverse('estadoVehiculo') + '?DELETED')
     except:
         return redirect(reverse('estadoVehiculo') + '?FAIL')
+
+
+def vehiculo_lista(request):
+    context = {'vehiculo': Vehiculo.objects.all()}
+    return render(request,'crud/vehiculo.html',context)
+
+
+def vehiculo_new(request):
+    if request.method == 'POST':
+        form = VehiculoForm(request.POST, request.FILES)
+        if form.is_valid():
+            idVehiculo = form.cleaned_data.get('idVehiculo')
+            nombre = form.cleaned_data.get('nombre')
+            tipo = form.cleaned_data.get('tipo')
+            color = form.cleaned_data.get('color')
+            estado = form.cleaned_data.get('estado')
+            image = form.cleaned_data.get('image')
+            obj = EstadoVehiculo.objects.create(
+                idVehiculo = idVehiculo,
+                nombre = nombre,
+                tipo = tipo,
+                color = color,
+                estado = estado,
+                image = image
+            )
+            obj.save()
+            return redirect(reverse('vehiculo')+ '?OK')
+        else:
+            return redirect(reverse('vehiculo')+ '?FAIL')
+    else:
+        form = VehiculoForm
+    return render(request,'crud/vehiculo-new.html',{'form':form})
+
+
+def vehiculo_update(request,vehiculo_id):
+    try:
+        vehiculo = Vehiculo.objects.get(idVehiculo = vehiculo_id)
+        form = VehiculoForm(instance=vehiculo)
+
+        if request.method == 'POST':
+            form = VehiculoForm(request.POST, request.FILES, instance=vehiculo)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('vehiculo') + '?UPDATED')
+            else:
+                return redirect(reverse('vehiculo-edit') + vehiculo_id) 
+
+        context = {'form':form}
+        return render(request,'crud/vehiculo-edit.html',context)
+    except:
+        return redirect(reverse('vehiculo') + '?NO_EXISTS')
+
+
+def vehiculo_detail(request, vehiculo_id):
+    try:
+        vehiculo = Vehiculo.objects.get(idVehiculo = vehiculo_id )
+        if vehiculo:
+            context = {'vehiculo':vehiculo}
+            return render(request,'crud/vehiculo-detail.html',context)
+        else:
+            return redirect(reverse('vehiculo') + '?lala')
+    except:
+        return redirect(reverse('vehiculo') + '?FAIL')
+
+
+def vehiculo_delete(request, vehiculo_id):
+    try:
+        vehiculo = Vehiculo.objects.get(idVehiculo=vehiculo_id)
+        vehiculo.delete()
+        return redirect(reverse('vehiculo') + '?DELETED')
+    except:
+        return redirect(reverse('vehiculo') + '?FAIL')
+
+
+def transportista_lista(request):
+    context = {'vehiculo': Vehiculo.objects.all()}
+    return render(request,'crud/vehiculo.html',context)
+
+
+def transportista_new(request):
+    if request.method == 'POST':
+        form = TransportistaForm(request.POST, request.FILES)
+        if form.is_valid():
+            nombre = form.cleaned_data.get('nombre')
+            direccion = form.cleaned_data.get('direccion')
+            rut = form.cleaned_data.get('rut')
+            image = form.cleaned_data.get('image')
+            obj = Transportista.objects.create(
+                nombre = nombre,
+                direccion = direccion,
+                rut = rut,
+                image = image
+            )
+            obj.save()
+            return redirect(reverse('transportista')+ '?OK')
+        else:
+            return redirect(reverse('transportista')+ '?FAIL')
+    else:
+        form = TransportistaForm
+    return render(request,'crud/transportista-new.html',{'form':form})
+
+
+def transportista_update(request,transportista_id):
+    try:
+        transportista = Transportista.objects.get(id = transportista_id)
+        form = TransportistaForm(instance=transportista)
+
+        if request.method == 'POST':
+            form = TransportistaForm(request.POST, request.FILES, instance=transportista)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('transportista') + '?UPDATED')
+            else:
+                return redirect(reverse('transportista-edit') + transportista_id) 
+
+        context = {'form':form}
+        return render(request,'crud/transportista-edit.html',context)
+    except:
+        return redirect(reverse('transportista') + '?NO_EXISTS')
+
+
+def transportista_detail(request, transportista_id):
+    try:
+        transportista = Transportista.objects.get(id = transportista_id )
+        if transportista:
+            context = {'transportista':transportista}
+            return render(request,'crud/transportista-detail.html',context)
+        else:
+            return redirect(reverse('transportista') + '?lala')
+    except:
+        return redirect(reverse('transportista') + '?FAIL')
+
+
+def transportista_delete(request, transportista_id):
+    try:
+        transportista = Transportista.objects.get(id=transportista_id)
+        transportista.delete()
+        return redirect(reverse('transportista') + '?DELETED')
+    except:
+        return redirect(reverse('transportista') + '?FAIL')
+
+
+def cliente_lista(request):
+    context = {'cliente': Cliente.objects.all()}
+    return render(request,'crud/cliente.html',context)
+
+
+def cliente_new(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST, request.FILES)
+        if form.is_valid():
+            nombre = form.cleaned_data.get('nombre')
+            direccion = form.cleaned_data.get('direccion')
+            rut = form.cleaned_data.get('rut')
+            email = form.cleaned_data.get('email')
+            obj = Cliente.objects.create(
+                nombre = nombre,
+                direccion = direccion,
+                rut = rut,
+                email = email
+            )
+            obj.save()
+            return redirect(reverse('cliente')+ '?OK')
+        else:
+            return redirect(reverse('cliente')+ '?FAIL')
+    else:
+        form = ClienteForm
+    return render(request,'crud/cliente-new.html',{'form':form})
+
+
+def cliente_update(request,cliente_id):
+    try:
+        cliente = Cliente.objects.get(id = cliente_id)
+        form = ClienteForm(instance=cliente)
+
+        if request.method == 'POST':
+            form = ClienteForm(request.POST, request.FILES, instance=cliente)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('cliente') + '?UPDATED')
+            else:
+                return redirect(reverse('cliente-edit') + cliente_id) 
+
+        context = {'form':form}
+        return render(request,'crud/cliente-edit.html',context)
+    except:
+        return redirect(reverse('cliente') + '?NO_EXISTS')
+
+
+def cliente_detail(request, cliente_id):
+    try:
+        cliente = Cliente.objects.get(id = cliente_id )
+        if cliente:
+            context = {'cliente':cliente}
+            return render(request,'crud/cliente-detail.html',context)
+        else:
+            return redirect(reverse('cliente') + '?lala')
+    except:
+        return redirect(reverse('cliente') + '?FAIL')
+
+
+def cliente_delete(request, cliente_id):
+    try:
+        cliente = Cliente.objects.get(id=cliente_id)
+        cliente.delete()
+        return redirect(reverse('cliente') + '?DELETED')
+    except:
+        return redirect(reverse('cliente') + '?FAIL')

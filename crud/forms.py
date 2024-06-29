@@ -103,3 +103,81 @@ class EstadoVehiculoForm(ModelForm):
             'id':forms.TextInput(attrs={'class':'form-control'}),
             'estado':forms.TextInput(attrs={'class':'form-control'})
         }
+
+class VehiculoForm(ModelForm):
+    class Meta:
+        model = Vehiculo
+        fields = [
+            'idVehiculo',
+            'nombre',
+            'tipo',
+            'color',
+            'estado',
+            'image'
+        ]
+        labels = {
+            'idVehiculo':'ID',
+            'nombre':'Nombre',
+            'tipo':'Tipo de Vehiculo',
+            'color':'Color del Vehiculo',
+            'estado':'Estado del Vehiculo',
+            'image':'Imagen'
+        }
+        widgets = {
+            'idVehiculo':forms.TextInput(attrs={'class':'form-control'}),
+            'nombre':forms.TextInput(attrs={'class':'form-control'}),
+            'tipo':forms.Select(attrs={'class':'form-control'}),
+            'color':forms.TextInput(attrs={'class':'form-control'}),
+            'estado':forms.Select(attrs={'class':'form-control'}),
+            'image':forms.FileInput(attrs={'class':'form-control'})
+        }
+
+class TransportistaForm(ModelForm):
+    class Meta:
+        model = Transportista
+        fields = [
+            'id',
+            'nombre',
+            'direccion',
+            'rut',
+            'image'
+        ]
+        labels = {
+            'id':'ID',
+            'nombre':'Nombre',
+            'direccion':'Direccion',
+            'rut':'Rut',
+            'image':'Imagen'
+        }
+        widgets = {
+            'id':forms.TextInput(attrs={'class':'form-control'}),
+            'nombre':forms.TextInput(attrs={'class':'form-control'}),
+            'direccion':forms.TextInput(attrs={'class':'form-control'}),
+            'rut':forms.TextInput(attrs={'class':'form-control'}),
+            'image':forms.FileInput(attrs={'class':'form-control'})
+        }
+
+class ClienteForm(ModelForm):
+    class Meta:
+        model = Cliente
+        fields = [
+            'id',
+            'nombre',
+            'direccion',
+            'rut',
+            'email'
+        ]
+        labels = {
+            'id':'ID',
+            'nombre':'Nombre',
+            'direccion':'Direccion',
+            'rut':'Rut',
+            'email':'Email'
+        }
+        widgets = {
+            'id':forms.TextInput(attrs={'class':'form-control'}),
+            'nombre':forms.TextInput(attrs={'class':'form-control'}),
+            'direccion':forms.TextInput(attrs={'class':'form-control'}),
+            'rut':forms.TextInput(attrs={'class':'form-control'}),
+            'email':forms.TextInput(attrs={'class':'form-control'})
+        }

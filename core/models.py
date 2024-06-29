@@ -18,11 +18,3 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
-
-class Carrier(models.Model):
-    name = models.CharField(max_length=100)
-    adress = models.CharField(max_length=100)
-    rut = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.name

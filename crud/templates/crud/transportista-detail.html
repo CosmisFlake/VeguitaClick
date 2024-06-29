@@ -1,0 +1,85 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}{{transportista.id}}{% endblock %}
+
+{% block main_content %}
+<div class="container m-4">
+<main>
+    <div class="row mb-3">
+        <h1>ID: {{transportista.id}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            {% if transportista.image %}
+            <img class="img-detail" src="{{transportista.image.url}}" alt="{{transportista.name}}">
+            {% else%}
+            <img class="img-detail" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <ul class="list-unstyled">
+                <li class="mb-2">Nombre: <p class="fw-bold">{{transportista.nombre}}</p></li>
+                <li class="mb-2">Direccion: <p class="fw-bold">{{transportista.direccion}}</p></li>
+                <li class="mb-2">Rut: <p class="fw-bold">{{transportista.rut}}</p></li>
+                <li class="mb-2 text-muted fst-italic">Registrado: {{transportista.created_at}}</li>
+                <li class="mb-2 text-muted fst-italic">Última actualización: {{transportista.updated_at}}</li>
+            </ul>
+            <div class="row">
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-primary" href="{% url 'transportista' %}">Volver</a> -->
+                    <a class="btn btn-primary m-2" href="{% url 'transportista' %}">Volver</a>
+                </div>
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-secondary" href="{% url 'transportista-edit' transportista_id=transportista.id %}">Editar</a> -->
+                    <a class="btn btn-secondary m-2" href="{% url 'transportista-edit' transportista_id=transportista.id %}">Editar</a>
+                </div>
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    data-href="{% url 'transportista-delete' transportista_id=transportista.id %}">
+                    Eliminar
+                    </a> -->
+                    <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    data-href="{% url 'transportista-delete' transportista_id=transportista.id %}">
+                    Eliminar
+                    </a>
+                </div>
+            </div>
+        </div>        
+    </div>
+</main>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Atencion!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="modal-title">Estas seguro que deseas eliminar el transportista seleccionado?<br>Esta acción no se puede deshacer.</h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                <a href="#" id="confirmar-borrar" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $('.modal-borrar').on('click',function(){
+        const href = $(this).attr('data-href');
+        $('#confirmar-borrar').attr('href',href);
+    });
+</script>
+{% endblock %}

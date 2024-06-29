@@ -88,6 +88,7 @@ class Vehiculo(models.Model):
     tipo = models.ForeignKey(TipoVehiculo,verbose_name='Tipo de Vehiculo',on_delete=models.CASCADE)
     color = models.CharField(verbose_name='Color de Vehiculo',max_length=12)
     estado = models.ForeignKey(EstadoVehiculo,verbose_name='Estado de Vehiculo',on_delete=models.CASCADE)
+    image = models.ImageField(verbose_name='Imagen',upload_to='vehiculo',null=True,blank=True)  
     created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
 
@@ -105,12 +106,31 @@ class Transportista(models.Model):
     nombre = models.CharField(verbose_name='Nombre',max_length=250)
     direccion = models.CharField(verbose_name='Direccion',max_length=100)
     rut = models.CharField(verbose_name='Rut',max_length=12)
+    image = models.ImageField(verbose_name='Imagen',upload_to='transportista',null=True,blank=True)
     created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
 
     class Meta:
-        verbose_name = 'vehiculo'
-        verbose_name_plural = 'vehiculos'
+        verbose_name = 'transportista'
+        verbose_name_plural = 'transportistas'
+        ordering = ['nombre']
+
+
+    def __str__(self) -> str:
+        return self.nombre
+
+
+class Cliente(models.Model):
+    nombre = models.CharField(verbose_name='Nombre',max_length=250)
+    direccion = models.CharField(verbose_name='Direccion',max_length=100)
+    rut = models.CharField(verbose_name='Rut',max_length=12)
+    email = models.EmailField(verbose_name='Email',max_length=200)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+
+    class Meta:
+        verbose_name = 'cliente'
+        verbose_name_plural = 'clientes'
         ordering = ['nombre']
 
 
