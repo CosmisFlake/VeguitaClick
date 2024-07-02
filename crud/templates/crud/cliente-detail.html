@@ -1,0 +1,79 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}{{cliente.id}}{% endblock %}
+
+{% block main_content %}
+<div class="container m-4">
+<main>
+    <div class="row mb-3">
+        <h1>ID: {{cliente.id}}</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="list-unstyled">
+                <li class="mb-2">Nombre: <p class="fw-bold">{{cliente.nombre}}</p></li>
+                <li class="mb-2">Direccion: <p class="fw-bold">{{cliente.direccion}}</p></li>
+                <li class="mb-2">Rut: <p class="fw-bold">{{cliente.rut}}</p></li>
+                <li class="mb-2">Email: <p class="fw-bold">{{cliente.email}}</p></li>
+                <li class="mb-2 text-muted fst-italic">Registrado: {{cliente.created_at}}</li>
+                <li class="mb-2 text-muted fst-italic">Última actualización: {{cliente.updated_at}}</li>
+            </ul>
+            <div class="row">
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-primary" href="{% url 'cliente' %}">Volver</a> -->
+                    <a class="btn btn-primary m-2" href="{% url 'cliente' %}">Volver</a>
+                </div>
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-secondary" href="{% url 'cliente-edit' cliente_id=cliente.id %}">Editar</a> -->
+                    <a class="btn btn-secondary m-2" href="{% url 'cliente-edit' cliente_id=cliente.id %}">Editar</a>
+                </div>
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    data-href="{% url 'cliente-delete' cliente_id=cliente.id %}">
+                    Eliminar
+                    </a> -->
+                    <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    data-href="{% url 'cliente-delete' cliente_id=cliente.id %}">
+                    Eliminar
+                    </a>
+                </div>
+            </div>
+        </div>        
+    </div>
+</main>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Atencion!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="modal-title">Estas seguro que deseas eliminar el cliente seleccionado?<br>Esta acción no se puede deshacer.</h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                <a href="#" id="confirmar-borrar" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $('.modal-borrar').on('click',function(){
+        const href = $(this).attr('data-href');
+        $('#confirmar-borrar').attr('href',href);
+    });
+</script>
+{% endblock %}

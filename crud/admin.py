@@ -16,9 +16,37 @@ class TipoProductoAdmin(admin.ModelAdmin):
     list_display = ('id','tipo')
     ordering = ['tipo']
 
+class TipoVehiculoAdmin(admin.ModelAdmin):
+    readonly_fields = ('id','created_at','updated_at')
+    list_display = ('id','tipo')
+    ordering = ['id']
+
+class EstadoVehiculoAdmin(admin.ModelAdmin):
+    readonly_fields = ('id','created_at','updated_at')
+    list_display = ('id','estado')
+    ordering = ['id']
+
+class VehiculoAdmin(admin.ModelAdmin):
+    readonly_fields = ('created_at','updated_at')
+    list_display = ('idVehiculo','nombre','tipo','color','estado')
+    ordering = ['idVehiculo']
+
+class TransportistaAdmin(admin.ModelAdmin):
+    readonly_fields = ('id','created_at','updated_at')
+    list_display = ('nombre','direccion','rut')
+    ordering = ['nombre']
+
+class ClienteAdmin(admin.ModelAdmin):
+    readonly_fields = ('id','created_at','updated_at')
+    list_display = ('nombre','direccion','rut','email')
+    ordering = ['nombre']
  
 
 admin.site.register(Proveedor, ProveedorAdmin)
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(TipoProducto, TipoProductoAdmin)
-
+admin.site.register(TipoVehiculo, TipoVehiculoAdmin)
+admin.site.register(EstadoVehiculo, EstadoVehiculoAdmin)
+admin.site.register(Vehiculo, VehiculoAdmin)
+admin.site.register(Transportista, TransportistaAdmin)
+admin.site.register(Cliente, ClienteAdmin)

@@ -1,0 +1,133 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}Transportistas{% endblock %}
+
+{% block main_content %}
+<div class="container-fluid">
+<main>
+<header>
+   <div class="container my-2 p-2 text-white text-center rounded bg-success">
+      <h1>Administrador de Transportistas</h1>
+   </div>
+</header>
+ <div class="container my-2">
+    <div class="row">
+        {% if 'OK' in request.GET %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Transportista registrado con exito!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'FAIL' in request.GET %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+             Se produjo un error, vuelve a intentarlo.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'NO_EXISTS' in request.GET %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            No se encontró el transportista indicado en nuestros datos.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'UPDATED' in request.GET %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            Transportista actualizado correctamente!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+        {% if 'DELETED' in request.GET %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Transportista eliminado correctamente!!
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %}
+    </div>
+ </div>
+
+ <div class="container-fluid my-2">
+     <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="table-success">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Direccion</th>
+                    <th>Rut</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transportista %}
+                <tr>
+                    <td>{{t.id}}</td>
+                    <td>{{t.nombre}}</td>
+                    <td>{{t.direccion}}</td>
+                    <td>{{t.rut}}</td>
+                    <td>
+                        {% if p.image %}
+                        <img class="img-transportista" src="{{p.image.url}}" alt="{{p.name}}">
+                        {% else%}
+                        <img class="img-transportista" src="{% static 'crud/img/image_not_found.jpg' %}" alt="INF">
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a class="text-decoration-none" href="{% url 'transportista-detail' transportista_id=t.id %}">
+                            <span class="text-primary fs-2">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                        </a>
+                        <a class="text-decoration-none" href="{% url 'transportista-edit' transportista_id=t.id %}">
+                            <span class="text-warning fs-2">
+                                <i class="fa-solid fa-pencil"></i>
+                            </span>
+                        </a>
+                        <a class="text-decoration-none modal-borrar" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"
+                            data-href="{% url 'transportista-delete' transportista_id=t.id %}">
+                            <span class="text-danger fs-2">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                        </a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Atencion!</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6 class="modal-title">Estas seguro que deseas eliminar el transportista seleccionado?<br>Esta acción no se puede deshacer.</h6>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                <a href="#" id="confirmar-borrar" class="btn btn-danger">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $('.modal-borrar').on('click',function(){
+        const href = $(this).attr('data-href');
+        $('#confirmar-borrar').attr('href',href);
+    });
+</script>
+{% endblock %}
