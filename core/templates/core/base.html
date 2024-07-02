@@ -15,6 +15,27 @@
     <link id="icon_page" rel="icon" href="{% static 'core/img/ig_logo.png' %}" type="icon/x-image">
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script type="text/javascript">
+      var user = '{{request.user}}'
+
+      function getCookie(name){
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '='))
+            {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+              }
+              }
+              }
+              return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
+    </script>
 
     <title>VeguitaClick</title>
 </head>
@@ -68,7 +89,7 @@
       </div>
     </div>
     <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
       <div class="container-fluid"> 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -78,19 +99,15 @@
             <li class="nav-item ms-lg-2">
               <a class="nav-link" href="{% url 'products' %}">Catálogo</a>
             </li>
-            {% if  request.user.is_authenticated %}
-            <li class="nav-item ms-lg-2">
-                <a class="nav-link" href="{% url 'exit' %}">Salir</a>
-            {% else %}    
-            </li>
-            <li class="nav-item ms-lg-2">
-              <a class="nav-link" href="{% url 'home' %}">Registrate!</a>
-            </li>
-            {% endif %}
           </ul>
-          {% if request.user.is_authenticated %}
-          {% block title %}Bienvenido {{request.session.usuario.first_name}} {{request.session.usuario.last_name}}{% endblock %}
-          {% endif %}
+           <div class="form-inline my-2 my-lg-0">
+             <a href="#"class="btn btn-warning">Registrate!</a>        
+             <a href="{% url 'carrito' %}">
+               <img id="cart-icon" src="{% static 'core/img/6+cart.png' %}">
+             </a>
+           </div>
+           <p id="cart-total">{{cartItems}}</p>
+           </div>
         </div>
      </div>
     </nav>
@@ -170,6 +187,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBt3ixABltNzmL_-1YiKKy2uKEksuLwnGI&callback=myMap"></script>
+  <script type="text/javascript" src="{% static 'core/js/carrito.js' %}"></script>
   {% block js_ %}{% endblock %}
 
 </body>
