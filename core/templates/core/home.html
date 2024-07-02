@@ -1,9 +1,10 @@
 {% extends 'core/base.html'%}
 {% load static %}
 {% block second_content %}
+<main>
     <section class="container" id="contenidos"> <!-- Contenidos -->
       <div class="row">
-        <div class="col-lg-3 col-md my-2 mx-auto">
+        <div class="col col-md my-2 mx-auto">
           <div class="card mx-auto">
             <img src="{%static 'core/img/backgrounds/productos.jpg'%}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -13,17 +14,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md my-2 mx-auto">
-          <div class="card mx-auto">
-            <img src="{%static 'core/img/backgrounds/envios.jpg'%}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Envios</h5>
-              <p class="card-text">Ingresa tu direccion y despacha tu pedido.</p>
-              <a href="" class="btn btn-success">Ver</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md my-2 mx-auto">
+        <div class="col col-md my-2 mx-auto">
           <div class="card mx-auto">
             <img src="{%static 'core/img/backgrounds/iniciar.jpg'%}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -35,7 +26,7 @@
         </div>
       </div>
     </section>
-  </main>
+</main>
 {% endblock %}
 
 

@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% load humanize %}
+
+{% block title %}Carrito{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a  class="btn btn-outline-dark" href="{% url 'products' %}">&#x2190; Continuar Comprando</a>
+
+            <br>
+            <br>
+            <table class="table">
+                <tr>
+                    <th><h5>Productos: <strong>{{order.get_cart_items}}</strong></h5></th>
+                    <th><h5>Total:<strong> ${{order.get_cart_total|intcomma}}</strong></h5></th>
+                    <th>
+                        <a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'envios' %}"> Comprar y Enviar</a>
+                    </th>
+                </tr>
+            </table>
+
+        </div>
+
+        <br>
+        {% csrf_token %}
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"></div>
+                <div style="flex:2"><strong>Producto</strong></div>
+                <div style="flex:1"><strong>Valor</strong></div>
+                <div style="flex:1"><strong>Cantidad</strong></div>
+                <div style="flex:1"><strong>Total</strong></div>
+            </div>
+            {% for it in items %}
+            <div class="cart-row">
+                <div style="flex:2"><img class="row-image" src="{{it.product.image.url}}"></div>
+                <div style="flex:2"><p>{{it.product.name}}</p></div>
+                <div style="flex:1"><p>${{it.product.price|intcomma}}</p></div>
+                <div style="flex:1">
+                    <p class="quantity">{{it.quantity}}</p>
+                    <div class="quantity">
+                        <img data-product="{{it.product.id}}" data-action="add" class="chg-quantity add-btn update-cart" src="{% static  'core/img/arrow-up.png' %}">
+                        <img data-product="{{it.product.id}}" data-action="remove" class="chg-quantity remove-btn update-cart" src="{% static  'core/img/arrow-down.png' %}">
+                    </div>
+                </div>
+                <div style="flex:1"><p>${{it.get_total| intcomma}}</p></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block js_ %}
+  <script src="{% static 'core/js/funciones.js' %}"></script>
+  <script src="{% static 'core/js/array.js' %}"></script>
+  <script src="{% static 'core/js/efectos.js' %}"></script>
+  <script src="{% static 'core/js/script_key.js' %}"></script>
+  <script src="{% static 'core/js/form.js' %}"></script>
+{% endblock %}
