@@ -1,0 +1,108 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block main_content %}
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="{% static 'crud/img/frutas.jpg' %}" alt="Card image">
+            <div class="card-img-overlay text-center">
+              <h5 class="card-title bg-dark">Productos</h5>
+              <a href="{% url 'producto' %}" class="btn btn-primary">Ver Lista</a>
+              <a href="{% url 'producto-new' %}" class="btn btn-success">Añadir dato</a>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm">
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="{% static 'crud/img/tipo.jpg' %}" alt="Card image">
+            <div class="card-img-overlay text-center">
+              <h5 class="card-title bg-dark">Tipo de Producto</h5>
+              <a href="{% url 'tipoProducto' %}" class="btn btn-primary">Ver Lista</a>
+              <a href="{% url 'tipoProducto-new' %}" class="btn btn-success">Añadir dato</a>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm">
+        <div class="card bg-dark text-white">
+            <img class="card-img" src="{% static 'crud/img/proveedor.jpg' %}" alt="Card image">
+            <div class="card-img-overlay text-center">
+              <h5 class="card-title bg-dark">Proveedor</h5>
+              <a href="{% url 'proveedor' %}" class="btn btn-primary">Ver Lista</a>
+              <a href="{% url 'proveedor-new' %}" class="btn btn-success">Añadir dato</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm">
+          <div class="card bg-dark text-white">
+              <img class="card-img" src="{% static 'crud/img/vehiculo.jpg' %}" alt="Card image">
+              <div class="card-img-overlay text-center">
+                <h5 class="card-title bg-dark">Vehiculo</h5>
+                <a href="{% url 'vehiculo' %}" class="btn btn-primary">Ver Lista</a>
+                <a href="{% url 'vehiculo-new' %}" class="btn btn-success">Añadir dato</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card bg-dark text-white">
+              <img class="card-img" src="{% static 'crud/img/tipo_vehiculo.jpg' %}" alt="Card image">
+              <div class="card-img-overlay text-center">
+                <h5 class="card-title bg-dark">Tipo de Vehiculo</h5>
+                <a href="{% url 'tipoVehiculo' %}" class="btn btn-primary">Ver Lista</a>
+                <a href="{% url 'tipoVehiculo-new' %}" class="btn btn-success">Añadir dato</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card bg-dark text-white">
+              <img class="card-img" src="{% static 'crud/img/estado_vehiculo.jpg' %}" alt="Card image">
+              <div class="card-img-overlay text-center">
+                <h5 class="card-title bg-dark">Estado de Vehiculo</h5>
+                <a href="{% url 'estadoVehiculo' %}" class="btn btn-primary">Ver Lista</a>
+                <a href="{% url 'estadoVehiculo-new' %}" class="btn btn-success">Añadir dato</a>
+              </div>
+            </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm">
+          <div class="card bg-dark text-white">
+              <img class="card-img" src="{% static 'crud/img/transportista.jpg' %}" alt="Card image">
+              <div class="card-img-overlay text-center">
+                <h5 class="card-title bg-dark">Transportista</h5>
+                <a href="{% url 'transportista' %}" class="btn btn-primary">Ver Lista</a>
+                <a href="{% url 'transportista-new' %}" class="btn btn-success">Añadir dato</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card bg-dark text-white">
+              <img class="card-img" src="{% static 'crud/img/cliente.jpg' %}" alt="Card image">
+              <div class="card-img-overlay text-center">
+                <h5 class="card-title bg-dark">Clientes</h5>
+                <a href="{% url 'cliente' %}" class="btn btn-primary">Ver Lista</a>
+                <a href="{% url 'cliente-new' %}" class="btn btn-success">Añadir dato</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card bg-dark text-white">
+              <img class="card-img" src="{% static 'crud/img/orden.jpg' %}" alt="Card image">
+              <div class="card-img-overlay text-center">
+                <h5 class="card-title bg-dark">Ordenes</h5>
+                <a href="#" class="btn btn-primary">Ver Lista</a>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  
+{% endblock %}
