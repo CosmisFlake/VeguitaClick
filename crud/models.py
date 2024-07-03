@@ -31,6 +31,19 @@ class TipoProducto(models.Model):
     def __str__(self) -> str:
         return self.tipo
 
+class TipoPeso(models.Model):
+    tipo_peso = models.CharField(verbose_name='Tipo de Peso', max_length=50)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+    
+    class Meta:
+        verbose_name = 'tipo de peso'
+        verbose_name_plural = 'tipo de pesos'
+        ordering = ['id']
+
+
+    def __str__(self) -> str:
+        return self.tipo_peso  
 
 class Producto(models.Model):
     idProducto = models.CharField(primary_key=True,verbose_name='ID',max_length=20)
@@ -39,6 +52,8 @@ class Producto(models.Model):
     proveedor = models.ForeignKey(Proveedor,verbose_name='Proveedor',on_delete=models.CASCADE)
     value = models.IntegerField(verbose_name='Valor')
     stock = models.IntegerField(verbose_name='Stock')
+    peso = models.IntegerField(verbose_name='Peso', null=True, blank=True)
+    tipo_peso = models.ForeignKey(TipoPeso,verbose_name='Tipo de Peso',on_delete=models.CASCADE, null=True)
     image = models.ImageField(verbose_name='Imagen',upload_to='producto',null=True,blank=True)    
     created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)

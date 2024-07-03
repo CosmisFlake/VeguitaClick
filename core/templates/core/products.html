@@ -22,6 +22,9 @@
                     <p class="card-text fst-italic">
                         <a>{{p.tipo}}</a>
                     </p>
+                    <p class="card-text fst-italic">
+                      <a>{{p.weight}} {{p.tipo_peso}}</a>
+                  </p>
                     <p class="card-title fw-bold">{{p.name}}</p>
                     <h4 class="card-text">${{p.price|intcomma}}</h4>
                     <a data-product="{{p.id}}" data-action="add" class="btn btn-dark pt-1 mb-2 add-btn update-cart" href="#">Añadir al Carrito</a>

@@ -56,7 +56,9 @@
                     <th>Nombre</th>
                     <th>Proveedor</th>
                     <th>Tipo de Producto</th>
-                    <th>Valor Unitario</th>
+                    <th>Valor</th>
+                    <th>Peso</th>
+                    <th>Unidad de Medida</th>
                     <th>Stock</th>
                     <th>Imagen</th>
                     <th>Acciones</th>
@@ -74,6 +76,8 @@
                         <a class=" text-dark" href="/crud/producto/tipo/{{p.tipo}}">{{p.tipo}}</a>
                     </td>
                     <td>{{p.value}}</td>
+                    <td>{{p.peso}}</td>
+                    <td>{{p.tipo_peso}}</td>
                     <td>{{p.stock}}</td>
                     <td>
                         {% if p.image %}

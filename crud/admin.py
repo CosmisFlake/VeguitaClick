@@ -15,6 +15,11 @@ class TipoProductoAdmin(admin.ModelAdmin):
     readonly_fields = ('id','created_at','updated_at')
     list_display = ('id','tipo')
     ordering = ['tipo']
+    
+class TipoPesoAdmin(admin.ModelAdmin):
+    readonly_fields = ('id','created_at','updated_at')
+    list_display = ('id','tipo_peso')
+    ordering = ['tipo_peso']
 
 class TipoVehiculoAdmin(admin.ModelAdmin):
     readonly_fields = ('id','created_at','updated_at')
@@ -45,6 +50,7 @@ class ClienteAdmin(admin.ModelAdmin):
 admin.site.register(Proveedor, ProveedorAdmin)
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(TipoProducto, TipoProductoAdmin)
+admin.site.register(TipoPeso, TipoPesoAdmin)
 admin.site.register(TipoVehiculo, TipoVehiculoAdmin)
 admin.site.register(EstadoVehiculo, EstadoVehiculoAdmin)
 admin.site.register(Vehiculo, VehiculoAdmin)

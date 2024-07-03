@@ -1,16 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
-class Payment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    # amount = models.IntegerField()
-    timestamp = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f'{self.user.username} - ${self.amount}'
-
 class Client(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
@@ -18,7 +8,7 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
-<<<<<<< HEAD
+
 
 class Carrier(models.Model):
     name = models.CharField(max_length=100)
@@ -44,10 +34,20 @@ class ProductType(models.Model):
 
     def __str__(self) -> str:
         return self.tipo    
+
+class WeightType(models.Model):
+    tipo_peso = models.CharField(verbose_name='Tipo de Peso', max_length=50)
+    created_at = models.DateTimeField(verbose_name='Fecha creación', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Fecha actualización', auto_now=True)
+
+    def __str__(self) -> str:
+        return self.tipo_peso  
 class Product(models.Model):
     name = models.CharField(max_length=200, verbose_name='Nombre')
     price = models.IntegerField(verbose_name='Precio')
+    weight = models.IntegerField(verbose_name='Peso', null=True, blank=True)
     tipo = models.ForeignKey(ProductType,verbose_name='Tipo de Producto',on_delete=models.CASCADE, null=True)
+    tipo_peso = models.ForeignKey(WeightType,verbose_name='Tipo de Peso',on_delete=models.CASCADE, null=True)
     digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)
 
@@ -119,5 +119,4 @@ class ShippingAdress(models.Model):
 
 
 
-=======
->>>>>>> master
+
