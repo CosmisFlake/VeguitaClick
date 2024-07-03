@@ -11,7 +11,7 @@ import json
 import datetime
 
 # Create your views here.
-def home(request):
+def homeCore(request):
     return render(request, 'core/home.html')
 
 def products(request):
