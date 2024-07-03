@@ -11,6 +11,8 @@ class ProductoForm(ModelForm):
             'proveedor',
             'tipo',
             'value',
+            'peso',
+            'tipo_peso',
             'stock',
             'image'
         ]
@@ -20,6 +22,8 @@ class ProductoForm(ModelForm):
             'proveedor':'Proveedor',
             'tipo':'Tipo de Producto',
             'value':'Valor',
+            'peso':'Peso',
+            'tipo_peso':'Tipo de Peso',
             'stock':'Stock',
             'image':'Imagen'
         }
@@ -29,6 +33,8 @@ class ProductoForm(ModelForm):
             'tipo':forms.Select(attrs={'class':'form-control'}),
             'proveedor':forms.Select(attrs={'class':'form-control'}),
             'value':forms.TextInput(attrs={'class':'form-control','type':'number'}),
+            'peso':forms.TextInput(attrs={'class':'form-control','type':'number'}),
+            'tipo_peso':forms.Select(attrs={'class':'form-control'}),
             'stock':forms.TextInput(attrs={'class':'form-control','type':'number'}),
             'image':forms.FileInput(attrs={'class':'form-control'})
         }

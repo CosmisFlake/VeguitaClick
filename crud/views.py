@@ -1,10 +1,14 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse
+
 from .models import *
 from .forms import *
 
 # Create your views here.
 def root(request):
     return redirect('producto/')
+
+def home(request):
+    return render(request, 'crud/home.html')
 
 def producto_lista(request):
     context = {'producto': Producto.objects.all()}
