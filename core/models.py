@@ -18,7 +18,6 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
-<<<<<<< HEAD
 
 class Carrier(models.Model):
     name = models.CharField(max_length=100)
@@ -119,5 +118,3 @@ class ShippingAdress(models.Model):
 
 
 
-=======
->>>>>>> master

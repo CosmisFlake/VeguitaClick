@@ -368,7 +368,7 @@ def vehiculo_new(request):
             color = form.cleaned_data.get('color')
             estado = form.cleaned_data.get('estado')
             image = form.cleaned_data.get('image')
-            obj = EstadoVehiculo.objects.create(
+            obj = Vehiculo.objects.create(
                 idVehiculo = idVehiculo,
                 nombre = nombre,
                 tipo = tipo,
@@ -426,8 +426,8 @@ def vehiculo_delete(request, vehiculo_id):
 
 
 def transportista_lista(request):
-    context = {'vehiculo': Vehiculo.objects.all()}
-    return render(request,'crud/vehiculo.html',context)
+    context = {'transportista': Transportista.objects.all()}
+    return render(request,'crud/transportista.html',context)
 
 
 def transportista_new(request):
