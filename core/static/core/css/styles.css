@@ -73,6 +73,12 @@ main{
     border: 0px;
 }
 
+.hello-msg{
+    font: normal 600 25px 'Avenir Next LT Pro', sans-serif;
+    color: white;
+    margin-right: 20px;
+}
+
 .container-items{
     gap: 20px;
 }

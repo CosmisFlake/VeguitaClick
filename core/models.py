@@ -1,29 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Client(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    adress = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-class Carrier(models.Model):
-    name = models.CharField(max_length=100)
-    adress = models.CharField(max_length=100)
-    rut = models.CharField(max_length=10)
-
-    def __str__(self):
-        return self.name
-
 class Customer(models.Model):
-    user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, null=True)
-    email = models.CharField(max_length=200, null=True)
+    username = models.CharField(max_length=200, null=True)
+    email = models.EmailField(max_length=200, null=True)
 
     def __str__(self):
-        return self.name
+        return f'{self.username}'
 
 
 class ProductType(models.Model):
