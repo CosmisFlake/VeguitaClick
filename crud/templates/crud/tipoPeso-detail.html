@@ -2,25 +2,26 @@
 
 {% load static %}
 
-{% block title %}{{cliente.id}}{% endblock %}
+{% block title %}{{tipoPeso.id}}{% endblock %}
 
 {% block main_content %}
-<div class="container fluid">
+<div class="container-fluid">
     <main>
         <header>
             <div class="container my-2 py-3 text-white text-center rounded bg-success">
-                <h1>Informacion sobre Clientes</h1>
+                <h1>Informacion sobre Tipo de Peso</h1>
             </div>
         </header>
         <div class="container my-4">
-            <div class="row">
+            <div class="row">   
                 <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <ul class="list-unstyled">
-                                <li class="mb-2">Id de Cliente: <p class="fw-bold">{{cliente.id}}</p></li>
-                                <li class="mb-2">Username: <p class="fw-bold">{{cliente.username}}</p></li>
-                                <li class="mb-2">Email: <p class="fw-bold">{{cliente.email}}</p></li>
+                                <li class="mb-2">Id de tipo de peso: <p class="fw-bold">{{tipoPeso.id}}</p></li>
+                                <li class="mb-2">Tipo de peso: <p class="fw-bold">{{tipoPeso.tipo_peso}}</p></li>
+                                <li class="mb-2 text-muted fst-italic">Registrado: <p class="fw-bold">{{tipoPeso.created_at}}</p></li>
+                                <li class="mb-2 text-muted fst-italic">Última actualización: <p class="fw-bold">{{tipoPeso.updated_at}}</p></li>
                             </ul>
                         </div>
                     </div>
@@ -28,29 +29,24 @@
             </div>
             <div class="row">
                 <div class="col-2">
-                    <!-- <a class="btn btn-outline-primary" href="{% url 'cliente' %}">Volver</a> -->
-                    <a class="btn btn-primary m-2" href="{% url 'cliente' %}">Volver</a>
+                    <!-- <a class="btn btn-outline-primary" href="{% url 'tipoPeso' %}">Volver</a> -->
+                    <a class="btn btn-primary m-2" href="{% url 'tipoPeso' %}">Volver</a>
                 </div>
                 <div class="col-2">
-                    <!-- <a class="btn btn-outline-secondary" href="{% url 'cliente-edit' cliente_id=cliente.id %}">Editar</a> -->
-                    <a class="btn btn-secondary m-2" href="{% url 'cliente-edit' cliente_id=cliente.id %}">Editar</a>
+                    <!-- <a class="btn btn-outline-secondary" href="{% url 'tipoPeso-edit' tipoPeso_id=tipoPeso.id %}">Editar</a> -->
+                    <a class="btn btn-secondary m-2" href="{% url 'tipoPeso-edit' tipoPeso_id=tipoPeso.id %}">Editar</a>
                 </div>
                 <div class="col-2">
-                    <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                    data-href="{% url 'cliente-delete' cliente_id=cliente.id %}">
-                    Eliminar
-                    </a> -->
-                    <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop"
-                    data-href="{% url 'cliente-delete' cliente_id=cliente.id %}">
-                    Eliminar
-                    </a>
+                    <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal" 
+                    data-bs-target="#staticBackdrop" 
+                    data-href="{% url 'tipoPeso-delete' tipoPeso_id=tipoPeso.id %}">Eliminar</a> -->
+                    <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal" 
+                    data-bs-target="#staticBackdrop" 
+                    data-href="{% url 'tipoPeso-delete' tipoPeso_id=tipoPeso.id %}">Eliminar</a>
                 </div>
             </div>
-        </div>        
-    </div>
-</main>
+        </div>
+    </main>
 </div>
 
 <!-- Modal -->
@@ -63,7 +59,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h6 class="modal-title">Estas seguro que deseas eliminar el cliente seleccionado?<br>Esta acción no se puede deshacer.</h6>
+                <h6 class="modal-title">Estas seguro que deseas eliminar el peso seleccionado?<br>Esta acción no se puede deshacer.</h6>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>

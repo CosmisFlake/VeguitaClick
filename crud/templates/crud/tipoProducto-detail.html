@@ -7,45 +7,45 @@
 {% block main_content %}
 <div class="container-fluid">
     <main>
-    <header>
-    <div class="container my-2 py-3 text-white text-center rounded bg-success">
-        <h1>Informacion sobre Tipo de Producto</h1>
-    </div>
-    </header>
-    <div class="container my-4">
-        <div class="row">   
-            <div class="col-md-6">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <ul class="list-unstyled">
-                            <li class="mb-2">Id de tipo de producto: <p class="fw-bold">{{tipoProducto.id}}</p></li>
-                            <li class="mb-2">Tipo de producto: <p class="fw-bold">{{tipoProducto.tipo}}</p></li>
-                            <li class="mb-2 text-muted fst-italic">Registrado: <p class="fw-bold">{{tipoProducto.created_at}}</p></li>
-                            <li class="mb-2 text-muted fst-italic">Última actualización: <p class="fw-bold">{{tipoProducto.updated_at}}</p></li>
-                        </ul>
+        <header>
+            <div class="container my-2 py-3 text-white text-center rounded bg-success">
+                <h1>Informacion sobre Tipo de Producto</h1>
+            </div>
+        </header>
+        <div class="container my-4">
+            <div class="row">   
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">Id de tipo de producto: <p class="fw-bold">{{tipoProducto.id}}</p></li>
+                                <li class="mb-2">Tipo de producto: <p class="fw-bold">{{tipoProducto.tipo}}</p></li>
+                                <li class="mb-2 text-muted fst-italic">Registrado: <p class="fw-bold">{{tipoProducto.created_at}}</p></li>
+                                <li class="mb-2 text-muted fst-italic">Última actualización: <p class="fw-bold">{{tipoProducto.updated_at}}</p></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-primary" href="{% url 'tipoProducto' %}">Volver</a> -->
+                    <a class="btn btn-primary m-2" href="{% url 'tipoProducto' %}">Volver</a>
+                </div>
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-secondary" href="{% url 'tipoProducto-edit' tipoProducto_id=tipoProducto.id %}">Editar</a> -->
+                    <a class="btn btn-secondary m-2" href="{% url 'tipoProducto-edit' tipoProducto_id=tipoProducto.id %}">Editar</a>
+                </div>
+                <div class="col-2">
+                    <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal" 
+                    data-bs-target="#staticBackdrop" 
+                    data-href="{% url 'tipoProducto-delete' tipoProducto_id=tipoProducto.id %}">Eliminar</a> -->
+                    <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal" 
+                    data-bs-target="#staticBackdrop" 
+                    data-href="{% url 'tipoProducto-delete' tipoProducto_id=tipoProducto.id %}">Eliminar</a>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-2">
-                <!-- <a class="btn btn-outline-primary" href="{% url 'tipoProducto' %}">Volver</a> -->
-                <a class="btn btn-primary m-2" href="{% url 'tipoProducto' %}">Volver</a>
-            </div>
-            <div class="col-2">
-                <!-- <a class="btn btn-outline-secondary" href="{% url 'tipoProducto-edit' tipoProducto_id=tipoProducto.id %}">Editar</a> -->
-                <a class="btn btn-secondary m-2" href="{% url 'tipoProducto-edit' tipoProducto_id=tipoProducto.id %}">Editar</a>
-            </div>
-            <div class="col-2">
-                <!-- <a class="btn btn-outline-danger modal-borrar" data-bs-toggle="modal" 
-                data-bs-target="#staticBackdrop" 
-                data-href="{% url 'tipoProducto-delete' tipoProducto_id=tipoProducto.id %}">Eliminar</a> -->
-                <a class="btn btn-success m-2 modal-borrar" data-bs-toggle="modal" 
-                data-bs-target="#staticBackdrop" 
-                data-href="{% url 'tipoProducto-delete' tipoProducto_id=tipoProducto.id %}">Eliminar</a>
-            </div>
-        </div>
-    </div>
     </main>
 </div>
 

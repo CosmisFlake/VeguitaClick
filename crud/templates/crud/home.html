@@ -29,6 +29,16 @@
       </div>
       <div class="col-sm">
         <div class="card bg-dark text-white">
+            <img class="card-img" src="{% static 'crud/img/tipo.jpg' %}" alt="Card image">
+            <div class="card-img-overlay text-center">
+              <h5 class="card-title bg-dark">Tipo de Peso</h5>
+              <a href="{% url 'tipoPeso' %}" class="btn btn-primary">Ver Lista</a>
+              <a href="{% url 'tipoPeso-new' %}" class="btn btn-success">Añadir dato</a>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm">
+        <div class="card bg-dark text-white">
             <img class="card-img" src="{% static 'crud/img/proveedor.jpg' %}" alt="Card image">
             <div class="card-img-overlay text-center">
               <h5 class="card-title bg-dark">Proveedor</h5>
@@ -89,7 +99,6 @@
               <div class="card-img-overlay text-center">
                 <h5 class="card-title bg-dark">Clientes</h5>
                 <a href="{% url 'cliente' %}" class="btn btn-primary">Ver Lista</a>
-                <a href="{% url 'cliente-new' %}" class="btn btn-success">Añadir dato</a>
               </div>
             </div>
         </div>

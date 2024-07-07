@@ -16,6 +16,11 @@ urlpatterns = [
     path('tipoProducto/detail/<str:tipoProducto_id>', tipoProducto_detail, name="tipoProducto-detail"),
     path('tipoProducto/edit/<str:tipoProducto_id>', tipoProducto_update, name="tipoProducto-edit"),
     path('tipoProducto/new/', tipoProducto_new, name="tipoProducto-new"),
+    path('tipoPeso/', tipoPeso_lista, name="tipoPeso"), 
+    path('tipoPeso/<str:tipoPeso_id>/delete', tipoPeso_delete, name="tipoPeso-delete"),
+    path('tipoPeso/detail/<str:tipoPeso_id>', tipoPeso_detail, name="tipoPeso-detail"),
+    path('tipoPeso/edit/<str:tipoPeso_id>', tipoPeso_update, name="tipoPeso-edit"),
+    path('tipoPeso/new/', tipoPeso_new, name="tipoPeso-new"),
     path('proveedor/', proveedor_lista, name="proveedor"), 
     path('proveedor/<str:proveedor_id>/delete', proveedor_delete, name="proveedor-delete"),
     path('proveedor/detail/<str:proveedor_id>', proveedor_detail, name="proveedor-detail"),
@@ -45,5 +50,4 @@ urlpatterns = [
     path('cliente/<str:cliente_id>/delete', cliente_delete, name="cliente-delete"),
     path('cliente/detail/<str:cliente_id>', cliente_detail, name="cliente-detail"),
     path('cliente/edit/<str:cliente_id>', cliente_update, name="cliente-edit"),
-    path('cliente/new/', cliente_new, name="cliente-new"),
 ]

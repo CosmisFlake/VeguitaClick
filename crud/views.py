@@ -168,6 +168,68 @@ def tipoProducto_delete(request, tipoProducto_id):
         return redirect(reverse('tipoProducto') + '?FAIL')
 
 
+def tipoPeso_lista(request):
+    context = {'tipoPeso': TipoPeso.objects.all()}
+    return render(request,'crud/tipoPeso.html',context)
+
+
+def tipoPeso_new(request):
+    if request.method == 'POST':
+        form = TipoPesoForm(request.POST, request.FILES)
+        if form.is_valid():
+            tipo_peso = form.cleaned_data.get('tipo_peso')
+            obj = TipoPeso.objects.create(
+                tipo_peso = tipo_peso
+            )
+            obj.save()
+            return redirect(reverse('tipoPeso')+ '?OK')
+        else:
+            return redirect(reverse('tipoPeso')+ '?FAIL')
+    else:
+        form = TipoPesoForm
+    return render(request,'crud/tipoPeso-new.html',{'form':form})
+
+
+def tipoPeso_update(request,tipoPeso_id):
+    try:
+        tipoPeso = TipoPeso.objects.get(id = tipoPeso_id)
+        form = TipoPesoForm(instance=tipoPeso)
+
+        if request.method == 'POST':
+            form = TipoPesoForm(request.POST, request.FILES, instance=tipoPeso)
+            if form.is_valid():
+                form.save()
+                return redirect(reverse('tipoPeso') + '?UPDATED')
+            else:
+                return redirect(reverse('tipoPeso-edit') + tipoPeso_id) 
+
+        context = {'form':form}
+        return render(request,'crud/tipoPeso-edit.html',context)
+    except:
+        return redirect(reverse('tipoPeso') + '?NO_EXISTS')
+
+
+def tipoPeso_detail(request, tipoPeso_id):
+    try:
+        tipoPeso = TipoPeso.objects.get(id = tipoPeso_id )
+        if tipoPeso:
+            context = {'tipoPeso':tipoPeso}
+            return render(request,'crud/tipoPeso-detail.html',context)
+        else:
+            return redirect(reverse('tipoPeso') + '?lala')
+    except:
+        return redirect(reverse('tipoPeso') + '?FAIL')
+
+
+def tipoPeso_delete(request, tipoPeso_id):
+    try:
+        tipoPeso = TipoPeso.objects.get(id=tipoPeso_id)
+        tipoPeso.delete()
+        return redirect(reverse('tipoPeso') + '?DELETED')
+    except:
+        return redirect(reverse('tipoPeso') + '?FAIL')
+
+
 def proveedor_lista(request):
     context = {'proveedor': Proveedor.objects.all()}
     return render(request,'crud/proveedor.html',context)
@@ -499,40 +561,17 @@ def transportista_delete(request, transportista_id):
 
 
 def cliente_lista(request):
-    context = {'cliente': Cliente.objects.all()}
+    context = {'cliente': Customer.objects.all()}
     return render(request,'crud/cliente.html',context)
-
-
-def cliente_new(request):
-    if request.method == 'POST':
-        form = ClienteForm(request.POST, request.FILES)
-        if form.is_valid():
-            nombre = form.cleaned_data.get('nombre')
-            direccion = form.cleaned_data.get('direccion')
-            rut = form.cleaned_data.get('rut')
-            email = form.cleaned_data.get('email')
-            obj = Cliente.objects.create(
-                nombre = nombre,
-                direccion = direccion,
-                rut = rut,
-                email = email
-            )
-            obj.save()
-            return redirect(reverse('cliente')+ '?OK')
-        else:
-            return redirect(reverse('cliente')+ '?FAIL')
-    else:
-        form = ClienteForm
-    return render(request,'crud/cliente-new.html',{'form':form})
 
 
 def cliente_update(request,cliente_id):
     try:
-        cliente = Cliente.objects.get(id = cliente_id)
-        form = ClienteForm(instance=cliente)
+        cliente = Customer.objects.get(id = cliente_id)
+        form = CreateUserForm(instance=cliente)
 
         if request.method == 'POST':
-            form = ClienteForm(request.POST, request.FILES, instance=cliente)
+            form = CreateUserForm(request.POST, request.FILES, instance=cliente)
             if form.is_valid():
                 form.save()
                 return redirect(reverse('cliente') + '?UPDATED')
@@ -547,7 +586,7 @@ def cliente_update(request,cliente_id):
 
 def cliente_detail(request, cliente_id):
     try:
-        cliente = Cliente.objects.get(id = cliente_id )
+        cliente = Customer.objects.get(id = cliente_id )
         if cliente:
             context = {'cliente':cliente}
             return render(request,'crud/cliente-detail.html',context)
@@ -559,7 +598,7 @@ def cliente_detail(request, cliente_id):
 
 def cliente_delete(request, cliente_id):
     try:
-        cliente = Cliente.objects.get(id=cliente_id)
+        cliente = Customer.objects.get(id=cliente_id)
         cliente.delete()
         return redirect(reverse('cliente') + '?DELETED')
     except:
