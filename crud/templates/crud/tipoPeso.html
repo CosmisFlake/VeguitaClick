@@ -2,21 +2,21 @@
 
 {% load static %}
 
-{% block title %}Clientes{% endblock %}
+{% block title %}Tipo de Peso{% endblock %}
 
 {% block main_content %}
 <div class="container-fluid">
 <main>
 <header>
    <div class="container my-2 p-2 text-white text-center rounded bg-success">
-      <h1>Administrador de Clientes</h1>
+      <h1>Administrador de Tipo de Peso</h1>
    </div>
 </header>
  <div class="container my-2">
     <div class="row">
         {% if 'OK' in request.GET %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            Cliente registrado con exito!!
+             Tipo de Peso registrado con exito!!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
@@ -28,19 +28,19 @@
         {% endif %}
         {% if 'NO_EXISTS' in request.GET %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            No se encontró el cliente indicado en nuestros datos.
+            No se encontró el tipo de peso indicado en nuestros datos.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'UPDATED' in request.GET %}
         <div class="alert alert-info alert-dismissible fade show" role="alert">
-            Cliente actualizado correctamente!!
+            Tipo de Peso actualizado correctamente!!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
         {% if 'DELETED' in request.GET %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            Cliente eliminado correctamente!!
+            Tipo de Peso eliminado correctamente!!
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endif %}
@@ -53,31 +53,29 @@
             <thead class="table-success">
                 <tr>
                     <th>ID</th>
-                    <th>Username</th>
-                    <th>Email</th>
+                    <th>Tipo de Peso</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% for c in cliente %}
+                {% for tp in tipoPeso %}
                 <tr>
-                    <td>{{c.id}}</td>
-                    <td>{{c.username}}</td>
-                    <td>{{c.email}}</td>
+                    <td>{{tp.id}}</td>
+                    <td>{{tp.tipo_peso}}</td>
                     <td>
-                        <a class="text-decoration-none" href="{% url 'cliente-detail' cliente_id=c.id %}">
+                        <a class="text-decoration-none" href="{% url 'tipoPeso-detail' tipoPeso_id=tp.id %}">
                             <span class="text-primary fs-2">
                                 <i class="fa-solid fa-eye"></i>
                             </span>
                         </a>
-                        <a class="text-decoration-none" href="{% url 'cliente-edit' cliente_id=c.id %}">
+                        <a class="text-decoration-none" href="{% url 'tipoPeso-edit' tipoPeso_id=tp.id %}">
                             <span class="text-warning fs-2">
                                 <i class="fa-solid fa-pencil"></i>
                             </span>
                         </a>
                         <a class="text-decoration-none modal-borrar" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop"
-                            data-href="{% url 'cliente-delete' cliente_id=c.id %}">
+                            data-href="{% url 'tipoPeso-delete' tipoPeso_id=tp.id %}">
                             <span class="text-danger fs-2">
                                 <i class="fa-solid fa-trash"></i>
                             </span>
@@ -101,7 +99,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h6 class="modal-title">Estas seguro que deseas eliminar el cliente seleccionado?<br>Esta acción no se puede deshacer.</h6>
+                <h6 class="modal-title">Estas seguro que deseas eliminar el tipo de peso seleccionado?<br>Esta acción no se puede deshacer.</h6>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>

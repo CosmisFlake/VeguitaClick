@@ -78,6 +78,22 @@ class TipoProductoForm(ModelForm):
             'tipo':forms.TextInput(attrs={'class':'form-control'})
         }
 
+class TipoPesoForm(ModelForm):
+    class Meta:
+        model = TipoPeso
+        fields = [
+            'id',
+            'tipo_peso'
+        ]
+        labels = {
+            'id':'ID',
+            'tipo_peso':'Tipo de peso'
+        }
+        widgets = {
+            'id':forms.TextInput(attrs={'class':'form-control'}),
+            'tipo_peso':forms.TextInput(attrs={'class':'form-control'})
+        }
+
 class TipoVehiculoForm(ModelForm):
     class Meta:
         model = TipoVehiculo
