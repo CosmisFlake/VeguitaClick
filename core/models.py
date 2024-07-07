@@ -99,8 +99,3 @@ class ShippingAdress(models.Model):
     def __str__(self):
         return self.address
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
