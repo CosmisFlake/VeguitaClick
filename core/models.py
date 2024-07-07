@@ -118,7 +118,3 @@ class ShippingAdress(models.Model):
 
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
