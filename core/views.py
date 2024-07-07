@@ -1,19 +1,71 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseNotAllowed
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
-from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
-from .models import Customer, Product, Order, OrderItem, TipoEnvio, ShippingAdress
-from crud.models import Producto, Proveedor
+from .models import *
+from .forms import CreateUserForm
 from .utils import cookieCart, cartData, guestOrder
 from django.http import JsonResponse
 import json
 import datetime
 
 # Create your views here.
-def home(request):
-    return render(request, 'core/home.html')
+def homeCore(request):
+    data = cartData(request)
+    cartItems = data['cartItems']
+            
+    products = Product.objects.all()    
+    context = {'products':products, 'cartItems':cartItems}
+    return render(request, 'core/home.html', context)
 
+def registerPage(request):
+    form = CreateUserForm()
+    
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()  # Guarda el usuario
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            
+            user = authenticate(request, username=username, password=password)
+            login(request, user)        
+            messages.success(request, 'La cuenta fue creada para ' + username)
+            return redirect('login')
+        else:
+            messages.error(request, 'Hubo un error al crear la cuenta')
+            return redirect('register')
+           
+    else:      
+        context = {'form':form}
+        return render(request, 'accounts/register.html', context)
+
+def loginPage(request):
+    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('homeCore')
+        else:
+            messages.info(request, 'Usuario o contraseña incorrectos')
+    context = {}
+    return render(request, 'accounts/login.html', context)
+
+def logoutUser(request):
+    if request.method == 'POST' or request.method == 'GET':
+        logout(request)
+        return redirect('login')
+    else:
+        return HttpResponseNotAllowed(['GET', 'POST'])
+
+@login_required(login_url='login')
 def products(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -72,7 +124,7 @@ def processOrder(request):
     data = json.loads(request.body)
 
     if request.user.is_authenticated:
-         customer = request.user.customer
+         customer = request.username.customer
          order, created = Order.objects.get_or_create(customer=customer, complete=False)
         
 
@@ -97,13 +149,6 @@ def processOrder(request):
              
      
     return JsonResponse('Pago satisfactorio!', safe=False)
-
-def login (request):
-    login(request)
-    return redirect('core/inicioSesion.html')
-
-def exit (request):
-    logout(request)
-    return redirect('home')  
+ 
 
 
