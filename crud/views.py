@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect, reverse
 
 from .models import *
 from .forms import *
+from core.models import *
 
 # Create your views here.
 def root(request):
